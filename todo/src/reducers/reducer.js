@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from 'react'
+import { ADD, TOGGLE, CLEAR } from '../actions/actions'
 
 export const initialState = [
     {
@@ -8,45 +8,34 @@ export const initialState = [
     }
 ]
 
-const ToDo = () => {
 
-    const reducer = (state = initialState, action) => {
 
-        switch(action.type) {
+export const reducer = (state = initialState, action) => {
 
-            case("NEW"):
+    switch(action.type) {
 
-                return[
-                    ...state, 
-                    {
-                        item: action.payload,
-                        completed: false,
-                        id: Math.random()
-                    }
-                ]
+        case("NEW"):
 
-            case("TOGGLE"):
+            return[
+                ...state, 
+                {
+                    item: action.payload,
+                    completed: false,
+                    id: Math.random()
+                }
+            ]
 
-                return state.map(item => item.id === action.payload ? {...item, completed: !item.completed} : item)
+        case("TOGGLE"):
 
-            case("CLEAR"):
+            return state.map(item => item.id === action.payload ? {...item, completed: !item.completed} : item)
 
-                return state.filter(item => !item.completed)
+        case("CLEAR"):
 
-            default:
+            return state.filter(item => !item.completed)
 
-                return state
-        }
+        default:
+
+            return state
     }
-    
-        return (
-            <div>
-                <h2>{initialState.item}</h2>
-                <h2>{initialState.completed}</h2>
-                <h2>{initialState.id}</h2>
-            </div>
-        )
-    
 }
 
-export default ToDo
