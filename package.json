@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Mark-DeLong/reducer-todo/issues"
   },
-  "homepage": "https://github.com/Mark-DeLong/reducer-todo#readme"
+  "homepage": "https://github.com/Mark-DeLong/reducer-todo#readme",
+  "dependencies": {
+    "react": "^17.0.1"
+  }
 }

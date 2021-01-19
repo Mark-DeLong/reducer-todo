@@ -1,24 +1,52 @@
 import React, { useState, useReducer } from 'react'
 
-const Reducer = () => {
-    const [state, setState] = useState({
+export const initialState = [
+    {
         item: 'Learn about reducers',
         completed: false,
         id: 3892987589
-      })
-
-    const handleChanges = e => {
-        setState(e.target.value)
     }
+]
 
+const ToDo = () => {
 
-    return (
-        <div>
-            <h1>{state.item}</h1>
-            <h2>{state.completed}</h2>
-            <h3>{state.id}</h3>
-        </div>
-    )
+    const reducer = (state = initialState, action) => {
+
+        switch(action.type) {
+
+            case("NEW"):
+
+                return[
+                    ...state, 
+                    {
+                        item: action.payload,
+                        completed: false,
+                        id: Math.random()
+                    }
+                ]
+
+            case("TOGGLE"):
+
+                return state.map(item => item.id === action.payload ? {...item, completed: !item.completed} : item)
+
+            case("CLEAR"):
+
+                return state.filter(item => !item.completed)
+
+            default:
+
+                return state
+        }
+    }
+    
+        return (
+            <div>
+                <h2>{initialState.item}</h2>
+                <h2>{initialState.completed}</h2>
+                <h2>{initialState.id}</h2>
+            </div>
+        )
+    
 }
 
-export default Reducer
+export default ToDo
