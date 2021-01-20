@@ -19,5 +19,6 @@
   "homepage": "https://github.com/Mark-DeLong/reducer-todo#readme",
   "dependencies": {
     "react": "^17.0.1"
-  }
+  },
+  "devDependencies": {}
 }
